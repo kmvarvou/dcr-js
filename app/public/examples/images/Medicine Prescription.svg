@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="780" height="250" viewBox="0 0 780 250">
+  <defs>
+    <clipPath id="clip-n1"><rect x="30" y="60" width="155" height="155" rx="8"/></clipPath>
+    <clipPath id="clip-n2"><rect x="315" y="60" width="155" height="155" rx="8"/></clipPath>
+    <clipPath id="clip-n3"><rect x="600" y="60" width="155" height="155" rx="8"/></clipPath>
+    <marker id="cond-s" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#FEA00F"/>
+    </marker>
+    <marker id="cond-e" viewBox="0 0 20 20" refX="20" refY="10" markerWidth="10" markerHeight="10" orient="auto">
+      <circle cx="10" cy="10" r="9" fill="white" stroke="#FEA00F" stroke-width="2"/>
+      <g transform="translate(10,10)">
+        <line x1="-3" y1="0" x2="3" y2="0" stroke="#FEA00F" stroke-width="1.5"/>
+        <circle cx="-3" cy="0" r="2" fill="none" stroke="#FEA00F" stroke-width="1.5"/>
+        <line x1="3" y1="0" x2="3" y2="2" stroke="#FEA00F" stroke-width="1.5"/>
+        <line x1="1" y1="0" x2="1" y2="1.5" stroke="#FEA00F" stroke-width="1.5"/>
+      </g>
+    </marker>
+    <marker id="resp-s" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#2192FF"/>
+    </marker>
+    <marker id="resp-e" viewBox="0 0 20 20" refX="20" refY="10" markerWidth="10" markerHeight="10" orient="auto">
+      <circle cx="10" cy="10" r="9" fill="white" stroke="#2192FF" stroke-width="2"/>
+      <line x1="10" y1="5" x2="10" y2="11" stroke="#2192FF" stroke-width="1.8" stroke-linecap="round"/>
+      <circle cx="10" cy="13.5" r="0.8" fill="#2192FF"/>
+    </marker>
+    <marker id="excl-s" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#dc3545"/>
+    </marker>
+    <marker id="excl-e" viewBox="0 0 20 20" refX="20" refY="10" markerWidth="10" markerHeight="10" orient="auto">
+      <circle cx="10" cy="10" r="9" fill="white" stroke="#dc3545" stroke-width="2"/>
+      <line x1="6" y1="10" x2="14" y2="10" stroke="#dc3545" stroke-width="1.8"/>
+    </marker>
+  </defs>
+
+  <!-- Condition: Diagnose Patient → Prescribe Medicine -->
+  <line x1="185" y1="118" x2="315" y2="118" stroke="#FEA00F" stroke-width="2"
+        marker-start="url(#cond-s)" marker-end="url(#cond-e)"/>
+  <!-- Response: Diagnose Patient → Prescribe Medicine -->
+  <line x1="185" y1="152" x2="315" y2="152" stroke="#2192FF" stroke-width="2"
+        marker-start="url(#resp-s)" marker-end="url(#resp-e)"/>
+  <text x="250" y="168" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="9" fill="#2192FF">[Diagnosis = true]</text>
+
+  <!-- Condition: Prescribe Medicine → Buy Medicine -->
+  <line x1="470" y1="118" x2="600" y2="118" stroke="#FEA00F" stroke-width="2"
+        marker-start="url(#cond-s)" marker-end="url(#cond-e)"/>
+  <!-- Response: Prescribe Medicine → Buy Medicine -->
+  <line x1="470" y1="152" x2="600" y2="152" stroke="#2192FF" stroke-width="2"
+        marker-start="url(#resp-s)" marker-end="url(#resp-e)"/>
+  <text x="535" y="168" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="9" fill="#2192FF">P30D</text>
+
+  <!-- Self-exclude: Buy Medicine -->
+  <path d="M 622 60 C 622 18 752 18 752 60" stroke="#dc3545" stroke-width="2" fill="none"
+        marker-start="url(#excl-s)" marker-end="url(#excl-e)"/>
+
+  <!-- Node 1: Diagnose Patient -->
+  <rect x="30" y="60" width="155" height="155" rx="8" fill="white" stroke="#333" stroke-width="1.5"/>
+  <rect x="30" y="60" width="155" height="32" fill="#f5f5f5" clip-path="url(#clip-n1)"/>
+  <line x1="30" y1="92" x2="185" y2="92" stroke="#ddd" stroke-width="1"/>
+  <text x="107" y="81" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#666">Doctor</text>
+  <text x="107" y="130" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#333">Diagnose</text>
+  <text x="107" y="148" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#333">Patient</text>
+
+  <!-- Node 2: Prescribe Medicine -->
+  <rect x="315" y="60" width="155" height="155" rx="8" fill="white" stroke="#333" stroke-width="1.5"/>
+  <rect x="315" y="60" width="155" height="32" fill="#f5f5f5" clip-path="url(#clip-n2)"/>
+  <line x1="315" y1="92" x2="470" y2="92" stroke="#ddd" stroke-width="1"/>
+  <text x="392" y="81" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#666">Doctor</text>
+  <text x="392" y="130" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#333">Prescribe</text>
+  <text x="392" y="148" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#333">Medicine</text>
+
+  <!-- Node 3: Buy Medicine -->
+  <rect x="600" y="60" width="155" height="155" rx="8" fill="white" stroke="#333" stroke-width="1.5"/>
+  <rect x="600" y="60" width="155" height="32" fill="#f5f5f5" clip-path="url(#clip-n3)"/>
+  <line x1="600" y1="92" x2="755" y2="92" stroke="#ddd" stroke-width="1"/>
+  <text x="677" y="81" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="11" fill="#666">Patient</text>
+  <text x="677" y="130" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#333">Buy</text>
+  <text x="677" y="148" text-anchor="middle" font-family="IBM Plex Sans, sans-serif" font-size="13" font-weight="600" fill="#333">Medicine</text>
+</svg>

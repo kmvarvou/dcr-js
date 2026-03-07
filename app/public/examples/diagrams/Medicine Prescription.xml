@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dcr:definitions xmlns:dcr="http://tk/schema/dcr">
+  <dcr:dcrGraph id="graph">
+    <dcr:event id="Event_05zzfzn" description="Diagnose Patient" role="Doctor" included="true"/>
+    <dcr:event id="Event_0akzsoe" description="Prescribe Medicine" role="Doctor" included="true"/>
+    <dcr:event id="Event_0ea7890.6827037436532992" description="Buy Medicine" role="Patient" included="true"/>
+    <dcr:relation type="condition" sourceId="Event_05zzfzn" targetId="Event_0akzsoe"/>
+    <dcr:relation type="response" sourceId="Event_05zzfzn" targetId="Event_0akzsoe" expressionId="edge_response_Event_05zzfzn_Event_0akzsoe_1--guard"/>
+    <dcr:relation type="condition" sourceId="Event_0akzsoe" targetId="Event_0ea7890.6827037436532992"/>
+    <dcr:relation type="response" sourceId="Event_0akzsoe" targetId="Event_0ea7890.6827037436532992" time="P30D"/>
+    <dcr:relation type="exclude" sourceId="Event_0ea7890.6827037436532992" targetId="Event_0ea7890.6827037436532992"/>
+  </dcr:dcrGraph>
+  <dcr:expressions>
+    <dcr:expression id="edge_response_Event_05zzfzn_Event_0akzsoe_1--guard" value="Diagnosis = true"/>
+  </dcr:expressions>
+  <dcr:variables>
+    <dcr:variable id="var_Event_05zzfzn" name="Diagnosis" type="Bool" eventId="Event_05zzfzn" defaultValue="false"/>
+  </dcr:variables>
+  <dcr:positions>
+    <dcr:position eventId="Event_05zzfzn" x="590" y="240" width="140" height="160"/>
+    <dcr:position eventId="Event_0akzsoe" x="890" y="240" width="140" height="160"/>
+    <dcr:position eventId="Event_0ea7890.6827037436532992" x="1186" y="239" width="140" height="160"/>
+  </dcr:positions>
+</dcr:definitions>
