@@ -1,65 +1,26 @@
 # DCR-js: an open-source process modelling and mining environment for DCR graphs
 
-[Try it live!](https://hugoalopez-dtu.github.io/dcr-js/)
+[Try it live!](https://kmvarvou.github.io/dcr-js/)
 
-What are DCR Graphs? A novel [Business Process Management](https://en.wikipedia.org/wiki/Business_process_management) notation is ideal for flexible processes, such as those in healthcare, municipal administration, or knowledge-intensive processes in general. The notation allows you to describe processes like a game, focusing on the rules.
+This repository extends [DCR-js](https://github.com/hugoalopez-dtu/dcr-js) to support multi-perspective declarative business processes, as described in the preprint:
+
+> *Process DoCtoR: Towards a Framework for Modeling, Diagnosing and Compliance Checking Multi-Perspective Declarative Business Processes* — preprint submitted to CAiSE Forums 2026.
+
+The extensions include:
+* A **React Flow-based modeler** (V2) as an alternative to the original diagram-js editor.
+* **Data variables** (Int, Bool, String) attached to events, with default values and FEEL guard expressions on relations.
+* **Time constraints** on condition (delay) and response (deadline) relations, specified as ISO 8601 duration strings (e.g. `P30D`, `PT2H`).
+* **Simulation** with a controllable clock, variable input popups, non-conformant execution mode, and XES event log export including timestamps and variable values.
+* **Conformance checking** with heatmap visualization distinguishing regular violations from time violations.
+
+What are DCR Graphs? A novel notation ideal for flexible processes, such as those in healthcare, municipal administration, or knowledge-intensive processes in general.
 
 For a formal definition of DCR graphs, please [read this paper](https://arxiv.org/pdf/1110.4161.pdf).
 
 This tool supports a wide range of process mining activities for DCR graphs:
 
-* Modeling, automatic layout, and nesting, and open test cases to support **Test Driven Modeling**.
-
-* Discovery with automatic layouting and nesting.
-
-* Conformance checking, both rule-based and alignment-based, with an additional heatmap feature to highlight both activations and violations, both log-based and trace-based.
-
-* Simulation and manual event log generation with both conforming and non-conforming traces.
-
-* Automatic event log generation by sampling models.
-
-## User Manual ##
-The user manual for DCR-js can be found in the [docs folder](https://github.com/hugoalopez-dtu/dcr-js/blob/main/docs/UserManual-DCR-js.pdf) (Document version June 27, 2025)
-A video walk-through explaining the main functionalities of the tool can be watched [here](http://tiny.cc/ya1o001)
-
-[![Screencast DCRjs](https://github.com/hugoalopez-dtu/dcr-js/blob/main/docs/screencastDCRJS.png)](http://tiny.cc/ya1o001)
-
-## Development information
-
-This project is organized into three separate modules.
-
-* [**App**](https://github.com/hugoalopez-dtu/dcr-js/tree/main/app): The main react application. Visit here for information on UI development and extension, as well as information on running the application locally.
-
-* [**Modeler**](https://github.com/hugoalopez-dtu/dcr-js/tree/main/modeler): The DCR graph editor. The editor is based on the popular [Diagram-js](https://github.com/bpmn-io/diagram-js) web editor. Visit here for information about editor development as well an how the editor is encapsulated for use in the application. 
-
-* [**DCR-engine**](https://github.com/hugoalopez-dtu/dcr-js/tree/main/dcr-engine): The underlying DCR engine. This module contains a typescript implementation of DCR graphs, all process mining algorithms, as well as all types used for these.
-
-# Citing DCR-js
-We are happy that you are using our project for research purposes. We would appreciate it if you cite our project in case you decide to use the models in your publication:
-
-If you use only the editor capabilities:
-```bibtex
-@inproceedings{dcrjs,
-  title={An open-source modeling editor for declarative process models},
-  author={Tamo, Lucien Kiven and Abbad-Andaloussi, Amine and Trinh, Dung My Thi and L{\'o}pez, Hugo A.},
-  booktitle={International Conference on Cooperative Information Systems 2023},
-  Volume={3552},
-  pages={1--5},
-  year={2023},
-  organization={CEUR-WS}
-}
-```
-If you use the process mining or simulation capabilities:
-```bibtex
-@inproceedings{christfort2025dcr,
-  title={DCR-JS: An Online Environment for Declarative Process Mining},
-  author={Christfort, Axel KF and L{\'o}pez, Hugo A.},
-  booktitle={23rd International Conference on Business Process Management},
-  Volume={4032},
-  pages={1--5},
-  year={2025}
-}
-```
+## Instructions ##
+A demo video of the extended version of DCR-JS can be watched [here](https://drive.google.com/file/d/1JYKle7RKJ_ZBBnIf75TVXzO_fgN84YYO/view).
 
 # License
 This package is published using an MIT license
