@@ -385,9 +385,11 @@ const SimulatorState = ({ setState, savedGraphs, setSavedGraphs, savedLogs, setS
                     const ms = parseDurationMs(edge.data.delay);
                     if (ms > 0) {
                         const delayUntil = new Date(clockRef.current.getTime() + ms);
+                        const existing = timeConstraintsRef.current[target]?.delayUntil;
+                        const finalDelayUntil = existing && existing > delayUntil ? existing : delayUntil;
                         timeConstraintsRef.current = {
                             ...timeConstraintsRef.current,
-                            [target]: { ...timeConstraintsRef.current[target], delayUntil },
+                            [target]: { ...timeConstraintsRef.current[target], delayUntil: finalDelayUntil },
                         };
                     }
                 }
@@ -402,7 +404,7 @@ const SimulatorState = ({ setState, savedGraphs, setSavedGraphs, savedLogs, setS
                     }
                 }
             }
-            
+
             if (timeConstraintsRef.current[nodeId]) {
                 const { deadline: _d, ...rest } = timeConstraintsRef.current[nodeId];
                 timeConstraintsRef.current = { ...timeConstraintsRef.current, [nodeId]: rest };
@@ -493,9 +495,11 @@ const SimulatorState = ({ setState, savedGraphs, setSavedGraphs, savedLogs, setS
                 const ms = parseDurationMs(edge.data.delay);
                 if (ms > 0) {
                     const delayUntil = new Date(clockRef.current.getTime() + ms);
+                    const existing = timeConstraintsRef.current[target]?.delayUntil;
+                    const finalDelayUntil = existing && existing > delayUntil ? existing : delayUntil;
                     timeConstraintsRef.current = {
                         ...timeConstraintsRef.current,
-                        [target]: { ...timeConstraintsRef.current[target], delayUntil },
+                        [target]: { ...timeConstraintsRef.current[target], delayUntil: finalDelayUntil },
                     };
                 }
             }
